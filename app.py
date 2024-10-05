@@ -5,12 +5,40 @@ import joblib
 # Load the saved XGBoost model
 model = joblib.load('xgboost_model.pkl')
 
+import base64
+
+# Specify the local image file name
+image_path = "background.png"  # Change this to your image filename
+
+# Function to load the image and convert it to base64
+def load_image(image_file):
+    with open(image_file, "rb") as f:
+        return base64.b64encode(f.read()).decode()
+
+# Load the image
+image_base64 = load_image(image_path)
+
+# Inject custom CSS to apply the background image
+page_bg_img = f'''
+<style>
+.stApp {{
+    background-image: url(data:image/jpeg;base64,{image_base64});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;  /* Cover the whole height of the viewport */
+}}
+</style>
+'''
+
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
 # Streamlit app title
-st.title('XGBoost Prediction Web App')
+st.title('Prediction of molar heat capacity of pure liquid-phase ionic liquids using XGBoost model')
 
 # Instructions
 st.write("""
-### Input your values below to get a prediction.
+### Input the features below to get the predicted heat capacity value.
 """)
 
 # Create input fields for the features using their exact names
@@ -95,6 +123,6 @@ input_data = pd.DataFrame({
 })
 
 # When the user clicks the "Predict" button, make a prediction
-if st.button('Predict'):
+if st.button('Run the prediction'):
     prediction = model.predict(input_data)
-    st.write(f'Predicted Output: {prediction[0]}')
+    st.write(f'Predicted heat capacity for the input IL is: {prediction[0]:.4f}')
