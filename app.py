@@ -166,7 +166,7 @@ elif tab == "Search by IL":
     ### Input the temperature and IL name below to get the predicted heat capacity value.
     """)
 
-    temperature = st.number_input('**T (K):**', min_value=187.36, max_value=524.87, value=183.45)
+    temperature = st.number_input('**T (K):**', min_value=187.36, max_value=524.87, value=187.36)
 
     selected_compound = st.selectbox('**Select an IL**', compounds_df['Compound Name'].unique())
 
