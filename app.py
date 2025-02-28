@@ -8,7 +8,7 @@ model = joblib.load('xgboost_model.pkl')
 compounds_df = pd.read_excel('compounds.xlsx')
 
 feature_ranges = {
-    'T (K)': (183.45, 554.94),
+    'T (K)': (187.36, 524.87),
     '  -CH3': (0, 12),
     ' -CH2-': (0, 44),
     '>CH-': (0, 3),
@@ -79,7 +79,7 @@ if tab == "Manual Input":
     ### Input the features below to get the predicted heat capacity value.
     """)
 
-    F1 = st.number_input('**T (K):**', min_value=183.45, max_value=554.94, value=183.45)
+    F1 = st.number_input('**T (K):**', min_value=187.36, max_value=524.87, value=183.45)
     F2 = st.number_input('**-CH3:**', min_value=0, max_value=12, value=2)
     F3 = st.number_input('**-CH2-**', min_value=0, max_value=44, value=3)
     F4 = st.number_input('**\>CH-**', min_value=0, max_value=3, value=0)
@@ -166,7 +166,7 @@ elif tab == "Search by IL":
     ### Input the temperature and IL name below to get the predicted heat capacity value.
     """)
 
-    temperature = st.number_input('**T (K):**', min_value=183.45, max_value=554.94, value=183.45)
+    temperature = st.number_input('**T (K):**', min_value=187.36, max_value=524.87, value=183.45)
 
     selected_compound = st.selectbox('**Select an IL**', compounds_df['Compound Name'].unique())
 
