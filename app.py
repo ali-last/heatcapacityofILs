@@ -79,7 +79,7 @@ if tab == "Manual Input":
     ### Input the features below to get the predicted heat capacity value.
     """)
 
-    F1 = st.number_input('**T (K):**', min_value=187.36, max_value=524.87, value=183.45)
+    F1 = st.number_input('**T (K):**', min_value=187.36, max_value=524.87, value=187.36)
     F2 = st.number_input('**-CH3:**', min_value=0, max_value=12, value=2)
     F3 = st.number_input('**-CH2-**', min_value=0, max_value=44, value=3)
     F4 = st.number_input('**\>CH-**', min_value=0, max_value=3, value=0)
